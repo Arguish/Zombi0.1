@@ -1,5 +1,3 @@
-console.log("Sword ¿art? ONLINE");
-
 function Sword(x, y, type, id, dx, dy) {
   Pawn.call(this, x, y, type, id);
   this.blockedTerrain = [""];

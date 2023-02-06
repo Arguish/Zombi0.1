@@ -3,7 +3,6 @@ function Hunter(x, y, type, id) {
   Pawn.call(this, x, y, type, id);
   this.go = true;
   this.blockedTerrain = ["hunter", "vagabond", "wall"];
-  this.target = ["soldier"];
 }
 
 Hunter.prototype = Object.create(Pawn.prototype);

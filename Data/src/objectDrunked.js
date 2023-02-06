@@ -2,7 +2,6 @@
 function Vagabond(x, y, type, id) {
   Pawn.call(this, x, y, type, id);
   this.blockedTerrain = ["hunter", "vagabond", "wall"];
-  this.target = ["soldier"];
 }
 
 Vagabond.prototype = Object.create(Pawn.prototype);

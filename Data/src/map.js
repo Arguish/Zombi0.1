@@ -1,7 +1,6 @@
 function Map(width = 10, height = 10) {
   this.width = width;
   this.height = height;
-  this.gameOn = false;
   this.entities = [];
   this.matrix = [];
   this.bloodMoon = 0;
@@ -248,5 +247,4 @@ Map.prototype.loop = function (a, b) {
   this.spawnEnemy();
   this.moveAllEnemies();
   this.updateMap();
-  //this.overlap();
 };

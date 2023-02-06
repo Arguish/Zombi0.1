@@ -54,10 +54,6 @@ h1 {
   border-radius: 100%;
 }
 
-.dummy {
-  background-color: var(--acento3);
-}
-
 .wall {
   background-image: url("../assests/images/wall.png");
   background-size: contain;
@@ -81,15 +77,4 @@ h1 {
   background-image: url("../assests/images/spawn.png");
   background-size: contain;
   background-color: var(--acento1);
-}
-
-.clang {
-  background-image: url("../assests/images/explosion.png");
-  background-size: contain;
-  background-color: var(--acento3);
-}
-.boom {
-  background-image: url("../assests/images/dead.png");
-  background-size: contain;
-  background-color: rgba(0, 0, 0, 0);
 }

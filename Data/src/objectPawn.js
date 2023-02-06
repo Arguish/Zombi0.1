@@ -20,7 +20,6 @@ function Pawn(x, y, type, id) {
     down: "",
   };
   this.blockedTerrain = [];
-  this.target = [];
 }
 
 Pawn.prototype.hide = function () {

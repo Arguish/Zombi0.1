@@ -107,7 +107,7 @@ Map.prototype.newEnemy = function (x, y) {
     ); /* dado que la cazadora es mas peligrosa tenderann a generarse mennos */
   }
   if (a > 1) {
-    /* la fuerza del herrannte reside en su numero y enn lo erratico de sus movimientos, por eso deben gennerarse mas de este tipo, solos nno sonn muy peligrosos, pero en lo que se juntan muchos empiezann los problemas */
+    /* la fuerza del errante reside en su numero y enn lo erratico de sus movimientos, por eso deben gennerarse mas de este tipo, solos nno sonn muy peligrosos, pero en lo que se juntan muchos empiezann los problemas */
     this.entities.push(new Vagabond(x, y, "vagabond", this.uniqueId()));
   }
 };
@@ -258,7 +258,7 @@ Map.prototype.overlap = function () {
           if (
             this.entities[i].type === "sword" &&
             this.entities[j].type ===
-              "vagabond" /* anntes ahblamos de que habia dos tipos de zombies, el errannte es el unnico al que puedes maatar a distanncia, porque el hunter te esquiva las espadas, esto se traduce enn que solo comprobamos la colision con el herrante */
+              "vagabond" /* anntes ahblamos de que habia dos tipos de zombies, el errannte es el unnico al que puedes maatar a distanncia, porque el hunter te esquiva las espadas, esto se traduce enn que solo comprobamos la colision con el errante */
           ) {
             this.searchAndDestroy(this.entities[j].id);
           }

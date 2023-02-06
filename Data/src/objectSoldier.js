@@ -1,4 +1,6 @@
 // Soldado
+/* Despues de comentar el objeto padre, el objeto soldier parece mennos misterioso, lo unnico especial que tiene es que recibe los inputs del jugador */
+
 function Soldier(x, y, type, id) {
   Pawn.call(this, x, y, type, id);
   this.blockedTerrain = ["wall", "hunter", "vagabond", "trap"];

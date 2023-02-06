@@ -190,7 +190,8 @@ Map.prototype.overlap = function () {
             this.searchAndDestroy(this.entities[j].id);
           }
           if (
-            this.entities[i].type === "vagabond" &&
+            (this.entities[i].type === "vagabond" ||
+              this.entities[i].type === "hunter") &&
             this.entities[j].type === "soldier"
           ) {
             aDie.play();

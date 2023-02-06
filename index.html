@@ -9,12 +9,16 @@
       href="./Data/assests/images/zombie.png"
       type="image/x-icon"
     />
+    <!-- Icono de la pestaña del navegador -->
     <link rel="stylesheet" href="./Data/style/index.css" />
+    <!-- link a hoja de estilos en css -->
 
     <title>Untitled Zombie Game</title>
+    <!-- titulo en la pestaña -->
   </head>
   <body>
     <h1>
+      <!-- Este H1 muestra un titulo con una imagen en medio, la imagen es la palbra ZOMBIE, de forma que al juntarlo todo se lee el titulo del juego con unna palabra en formato de imagen -->
       Untitled
       <img
         style="height: 50px"
@@ -24,22 +28,36 @@
     </h1>
 
     <div>
-      <button id="playGame">Play Game</button>
+      <button id="playGame">Play Game</button
+      ><!-- boton de inicio del juego, gracias a su ID lo podemos localizar mas facilmente en los archivos JS -->
       <br /><br />
     </div>
     <div id="gameWindow"></div>
+    <!-- este div no conntiene nada al principio, pero se le ha dado una ID para, al arrancar el juego, usarlo como padre para colocar los elementos creados dentro -->
 
     <script src="./Data/src/lets.js"></script>
+    <!-- este script contiende las declaraciones basica, los links de este html a js, declaracion de variables globales, audios y una funcion RNG amigable -->
     <script src="./Data/src/map.js"></script>
+    <!-- en este script esta el objeto mapa, desde el no solo se crea la logica del tablero, sino que tambien gestiona las interacciones entre personajes, asi como que se muestren en pantalla -->
     <script src="./Data/src/cell.js"></script>
+    <!-- el objeto cell en este script, es el objeto que conformará cada casilla del juego, almacenando en su interior toda la informacion relevante -->
     <script src="./Data/src/objectPawn.js"></script>
+    <!-- el objeto Pawn es la clase padre de la que heredaran ABSOLUTAMENTE todos los elementos del juego, de esta forma, solo alterando sus normas, se establecen los elementos de juego -->
     <script src="./Data/src/objectSoldier.js"></script>
-    <script src="./Data/src/objectZombie.js"></script>
+    <!-- el objeto soldier es el objeto que manejará el jugador, controlado por el teclado y el que dispara cada bucle del juego, si el jugador se mueve, el mundo responde, si el jugador esta quieto, todo espera por el -->
+    <script src="./Data/src/objectHunter.js"></script>
+    <!-- En este script esta uno de los dos tipos de zombies que hay en el juego, la cazadora busca al personaje del jugador para comerselo -->
     <script src="./Data/src/objectDrunked.js"></script>
+    <!-- Este es el otro tipo de zombie y el mas evasivo, su movimiento es completamente aleatorio, no persigue al jugador, pero ya que es difil darle, acaba plagando el mapa -->
     <script src="./Data/src/objectWall.js"></script>
+    <!-- este objeto es el que se utiliza como muro, se coloca por defecto bordeando el mapa, para asi contener todos los elementos dentro de la cuadricula -->
     <script src="./Data/src/objectSword.js"></script>
+    <!-- este objeto representa la espada del jugador, hereda de la clase peon, y por asi decirlo, esta pensado como un "zombie" aliado, esto quiere decir que aparece como los zombies, camina en linea recta y si se encuentra con un zzombie o una pared hay una interaccion. Si es un herrante, lo hace desaparecer y desaparece la espada, si es una cazadora, la ignora y si es un muro, desaparece la espada pero no el muro -->
     <script src="./Data/src/objectTrap.js"></script>
+    <!-- al programar este script nos dimos cuenta de que si lanzabas dos espadas seguidas en la misma direccion se apilaban dentro del objeto celda, asi que para evitar futuros problemas, convertimos esto en una mewcanica, al lanzar una segunda espada en la misma direccion que la primera, se crea una trampa, este objeto hereda de peon, es como un muro, pero con la salvedad que si uno de los zombies lo atraviesa, desaparece el zombie y este objeto -->
     <script src="./Data/src/objectSpawn.js"></script>
+    <!-- este objeto es como un muro, pero los zombies pueden atravesarlo, su unica funcion es ser colocado en el mapa para servir de referenncia para ahcer aparecer los zombies desde un lugar concreto -->
     <script src="./Data/src/index.js"></script>
+    <!-- en este script esta lo basico para arrancar el juego, los event listeners y la funcion para empezar la partida, que establece los parametros basicos de la partida y crea el entorno de juego. Tambien activa el event listener del teclado y se encarga de filtrar todas las teclas utiles de las que no, para asi evitar pulsaciones accidentales. -->
   </body>
 </html>

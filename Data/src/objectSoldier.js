@@ -1,6 +1,3 @@
-// Soldado
-/* Despues de comentar el objeto padre, el objeto soldier parece mennos misterioso, lo unnico especial que tiene es que recibe los inputs del jugador */
-
 class Soldier extends Pawn {
   constructor(x, y, type, id) {
     super(x, y, type, id);

@@ -2,6 +2,7 @@ let gameWindow = document.querySelector("#gameWindow");
 let playGameButton = document.querySelector("#playGame");
 
 let gameMap;
+let timerId;
 
 const mainMusic = new Audio("./Data/assests/music/CHIPTUNE_The_Bards_Tale.mp3");
 const loopMusic = new Audio("./Data/assests/music/The Crypt Loop.wav");

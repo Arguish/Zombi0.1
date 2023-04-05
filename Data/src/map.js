@@ -11,6 +11,14 @@ function Map(width = 10, height = 10) {
   this.bloodMoon = 0; /* Esta variable de nnombre tann fancy es el contador de cuando aparecera unna oleada de zombies, se compoarte entre todas las tumbas que puedan haber enn el tablero, en un futuro reducir el valor de reinicio de este contador asi como aumenntar la canntidad de lapidas podria aumenntar la dificultad */
 }
 
+Map.prototype.uniqueId = function () {
+  /* esta funcion gennera unna id unica para cada elemennto creado, no siempre es necesaria, pero enn caso de nnecesitarlo, hay forma de idenntificar si dos elementos de identicas caracteristicas sonn en si elemenntos distinntos y de donnde sale, nos da, por asi decirlo una trazzabilidad. LA funcion lo que hace es conatennar la fecha del momentno de llamada con dias, horas, minutos y segundos junnto a un numero aleatorio, se le quitan todos los punntos y caracteres especiales para dejar una string sin demaciadas compljidades */
+  return (
+    Date().slice(0, 24).replaceAll(":", "").replaceAll(" ", "") +
+    Math.random().toString().replace(".", "")
+  );
+};
+
 Map.prototype.mapGenerator = function () {
   /* esta es la funcionn basica que genra el tablero de juego */
   let table =
@@ -55,11 +63,11 @@ Map.prototype.putWall = function () {
   this.matrix.map((a) => {
     if (a.x === 0 || a.y === 0) {
       /* hay que tener en cuennta que todos los bordes tendran una de sus coordenadas en un valor maximo o minnimo, asi que si uno de sus valores es 0 o el maximo del tablero, es un borde */
-      this.entities.push(new Wall(a.x, a.y, "wall", uniqueId()));
+      this.entities.push(new Wall(a.x, a.y, "wall", this.uniqueId()));
       /* como los muros tambien son connsiderados entidades se almacenana en el array de enntidades, con sus coordenadas y su clase, de esta forma cunado el metodo update repase el array de entidades sabra donnde debe dibujar un muro, ademas de impedir el paso al resto de elementos */
     }
     if (a.x === this.width - 1 || a.y === this.height - 1) {
-      this.entities.push(new Wall(a.x, a.y, "wall", uniqueId()));
+      this.entities.push(new Wall(a.x, a.y, "wall", this.uniqueId()));
     }
   });
 };
@@ -82,7 +90,7 @@ Map.prototype.clean = function (x, y) {
 
 Map.prototype.newPlayer = function (x, y) {
   /* esta funncion crea unn objeto jugador (soldier), y lo añade al array de enntidades */
-  this.entities.push(new Soldier(x, y, "soldier", uniqueId()));
+  this.entities.push(new Soldier(x, y, "soldier", this.uniqueId()));
 };
 
 Map.prototype.getPlayer = function () {
@@ -95,12 +103,12 @@ Map.prototype.newEnemy = function (x, y) {
   let a = RandomRange(1, 4);
   if (a === 1) {
     this.entities.push(
-      new Hunter(x, y, "hunter", uniqueId())
+      new Hunter(x, y, "hunter", this.uniqueId())
     ); /* dado que la cazadora es mas peligrosa tenderann a generarse mennos */
   }
   if (a > 1) {
     /* la fuerza del errante reside en su numero y enn lo erratico de sus movimientos, por eso deben gennerarse mas de este tipo, solos nno sonn muy peligrosos, pero en lo que se juntan muchos empiezann los problemas */
-    this.entities.push(new Vagabond(x, y, "vagabond", uniqueId()));
+    this.entities.push(new Vagabond(x, y, "vagabond", this.uniqueId()));
   }
 };
 
@@ -141,7 +149,7 @@ Map.prototype.shoot = function (keyInput, shootSword = false) {
         spawnPoint.x,
         spawnPoint.y,
         "sword",
-        uniqueId(),
+        this.uniqueId(),
         direction.x,
         direction.y
       )
@@ -162,14 +170,19 @@ Map.prototype.moveProyectiles = function (shooting) {
 
 Map.prototype.landTrap = function (x, y) {
   /* tneienndo en cuennta lo que pasaba enn la funcion anterior, hacia falta una funncion que creara comodamennte trampas y las añadiera al mapa como enntidades, esta es esa funncionn */
-  this.entities.push(new Trap(x, y, "trap", uniqueId()));
+  this.entities.push(new Trap(x, y, "trap", this.uniqueId()));
 };
 
 Map.prototype.spawnGrave = function (num) {
   /* las lapidas sirven como referenncia a los zombies para aparece, se le da unnas coordenadas aleatorias dentro del mapa para establecerse y ahi aparece, no tiene mucha mas logica esta funcionn, a todos los demas efgectos, es unn muro que los zombiews pueden atravesar */
   for (let index = 0; index < num; index++) {
     this.entities.push(
-      new Spawn(RandomRange(1, 18), RandomRange(1, 18), "spawn", uniqueId())
+      new Spawn(
+        RandomRange(1, 18),
+        RandomRange(1, 18),
+        "spawn",
+        this.uniqueId()
+      )
     );
   }
 };

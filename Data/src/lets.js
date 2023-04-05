@@ -30,10 +30,3 @@ function RandomRange(a, b) {
   /* dado que la funcion para generar nuemros aleatorios en JS es esteticamente fea, hemos decidido crear unna funncion menos hostil a la vista :D */
   return Math.floor(Math.random() * (b - a + 1) + a);
 }
-function uniqueId() {
-  /* esta funcion gennera unna id unica para cada elemennto creado, no siempre es necesaria, pero enn caso de nnecesitarlo, hay forma de idenntificar si dos elementos de identicas caracteristicas sonn en si elemenntos distinntos y de donnde sale, nos da, por asi decirlo una trazzabilidad. LA funcion lo que hace es conatennar la fecha del momentno de llamada con dias, horas, minutos y segundos junnto a un numero aleatorio, se le quitan todos los punntos y caracteres especiales para dejar una string sin demaciadas compljidades */
-  return (
-    Date().slice(0, 24).replaceAll(":", "").replaceAll(" ", "") +
-    Math.random().toString().replace(".", "")
-  );
-}
